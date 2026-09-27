@@ -49,8 +49,10 @@ DATA_FILE = Path(__file__).parent / "queue.json"
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 log = logging.getLogger("telegram_channel_bot")
 
-claude = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+from groq import Groq
+import os
 
+groq_client = Groq(api_key=os.environ["GROQ_API_KEY"])
 
 # ---------------------------------------------------------------------------
 # ذخیره‌سازی ساده‌ی صف پست‌ها روی فایل JSON
